@@ -1,0 +1,20 @@
+{
+  "entry_room": {
+    "name": "Entry",
+    "onenter": "This is a cold dark room, what do you want to do?",
+    "choices": {
+      "choice_1": {
+        "pointer": "#outside",
+        "Text": "Go Outside"
+      },
+      "choice_2": {
+        "pointer": "#death",
+        "Text": "Die"
+      }
+    }
+  },
+  "outside": {
+    "name": "Outside",
+    "onenter": "It is snowing outside! This is not good!"
+  }
+}

@@ -1,6 +1,5 @@
 from Character import Character
+from Game import Game
 
-becky = Character("Characters/becky.json")
-becky.print_data()
-print(becky.delete_value("Penis"))
-becky.print_data()
+game = Game("Scenes/entry.json", "entry_room")
+game.start()

@@ -1,20 +1,24 @@
 import json
 
 
-class Character:
-    def __init__(self, character_file, file_type="json"):
+class Scene:
+
+    def __init__(self, scene_file, file_type="json"):
         if file_type == "json":
             self.data = None
-            self.character_file = character_file
-            self.import_json(character_file)
+            self.character_file = scene_file
+            self.import_json(scene_file)
 
-    def import_json(self, character_json_file):
-        with open(character_json_file) as f:
+    def import_json(self, scene_json_file):
+        with open(scene_json_file) as f:
             self.data = json.load(f)
 
-    def save_json(self, character_json_file):
-        with open(character_json_file, 'w') as f:
+    def save_json(self, scene_json_file):
+        with open(scene_json_file, 'w') as f:
             json.dump(self.data, f)
+
+    def run(self):
+        print(self.data["onenter"])
 
     def add_value(self, key, value):
         if key in self.data.keys():
@@ -36,7 +40,3 @@ class Character:
         else:
             self.data[key] = value
             return True
-
-    def print_data(self):
-        print(self.data)
-        print(type(self.data))
