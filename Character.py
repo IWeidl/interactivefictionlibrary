@@ -1,5 +1,7 @@
 import json
 
+import xmltodict
+
 
 class Character:
     def __init__(self, character_file, file_type="json"):
@@ -11,6 +13,15 @@ class Character:
     def import_json(self, character_json_file):
         with open(character_json_file) as f:
             self.data = json.load(f)
+
+    def import_file(self, character_file, file_type="json"):
+        if file_type == "json":
+            with open(character_file) as f:
+                self.data = json.load(f)
+        elif file_type == "xml":
+            with open(character_file) as f:
+                self.data = xmltodict.parse(f.read())["scenes"]
+        self.character_file = character_file
 
     def save_json(self, character_json_file):
         with open(character_json_file, 'w') as f:

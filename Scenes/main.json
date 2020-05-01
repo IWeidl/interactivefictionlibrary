@@ -2,6 +2,13 @@
   "entry_room": {
     "name": "Entry",
     "onenter": "This is a cold dark room, what do you want to do?",
+    "characters": {
+      "trev_1": {
+        "name": "Trevor",
+        "age": 30,
+        "gender": "M"
+      }
+    },
     "choices": {
       "choice_1": {
         "pointer": "outside",

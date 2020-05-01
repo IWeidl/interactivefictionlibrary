@@ -2,16 +2,11 @@ import json
 import xmltodict
 
 class Game:
-    def __init__(self, game_file, starting_scene, file_type="json"):
+    def __init__(self, scene_file, starting_scene, file_type="json"):
         self.data = None
+        self.scene_file = scene_file
         self.current_scene = starting_scene
-
-        if file_type == "json":
-            self.import_json(game_file)
-            self.game_file = game_file
-        if file_type == "xml":
-            self.import_xml(game_file)
-            self.game_file = game_file
+        self.import_file(scene_file, file_type)
         self.current_choices = list(self.data[self.current_scene]["choices"].items())
 
     def start(self):
@@ -34,17 +29,18 @@ class Game:
     def read_choices(self):
         user_input = input("Enter input: ")
         if 0 <= int(user_input) < len(self.current_choices) + 1:
-            return self.current_choices[int(user_input)-1][1]["pointer"]
+            return self.current_choices[int(user_input) - 1][1]["pointer"]
         else:
             return False
 
-    def import_json(self, game_json_file):
-        with open(game_json_file) as f:
-            self.data = json.load(f)
-
-    def import_xml(self, game_xml_file):
-        with open(game_xml_file) as f:
-            self.data = xmltodict.parse(f.read())["scenes"]
+    def import_file(self, scene_file, file_type="json"):
+        if file_type == "json":
+            with open(scene_file) as f:
+                self.data = json.load(f)
+        elif file_type == "xml":
+            with open(scene_file) as f:
+                self.data = xmltodict.parse(f.read())["scenes"]
+        self.scene_file = scene_file
 
     def set_current_scene(self, new_scene):
         self.current_scene = new_scene
