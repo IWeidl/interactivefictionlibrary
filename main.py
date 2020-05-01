@@ -1,5 +1,5 @@
 from Character import Character
 from Game import Game
-
-game = Game("Scenes/entry.json", "entry_room")
+import json
+game = Game("Scenes/main.xml", "entry_room", file_type="xml")
 game.start()

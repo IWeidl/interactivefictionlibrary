@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenes>
+	<entry_room>
+		<name>Entry</name>
+		<onenter>This is a cold dark room, what do you want to do?</onenter>
+		<choices>
+			<choice_1>
+				<pointer>outside</pointer>
+				<text>Go Outside</text>
+			</choice_1>
+			<choice_2>
+				<pointer>death</pointer>
+				<text>Die</text>
+			</choice_2>
+		</choices>
+	</entry_room>
+	<outside>
+		<name>Outside</name>
+		<onenter>It is snowing like a blizzard outside! This is not good!</onenter>
+		<choices>
+			<choice_1>
+				<pointer>entry_room</pointer>
+				<text>Go back inside</text>
+			</choice_1>
+			<choice_2>
+				<pointer>death</pointer>
+				<text>Continue into wilderness..</text>
+			</choice_2>
+		</choices>
+	</outside>
+	<death>
+		<name>Death</name>
+		<onenter>You have died!</onenter>
+		<choices>
+			<choice_1>
+				<pointer>entry_room</pointer>
+				<text>Try again?</text>
+			</choice_1>
+		</choices>
+	</death>
+</scenes>
