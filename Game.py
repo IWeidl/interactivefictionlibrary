@@ -1,5 +1,7 @@
 import json
+
 import xmltodict
+
 
 class Game:
     def __init__(self, scene_file, starting_scene, file_type="json"):
