@@ -1,14 +1,14 @@
 import json
 
 import xmltodict
-
-
+import Utilities
+from Character import Character
 class Game:
     def __init__(self, scene_file, starting_scene, file_type="json"):
-        self.data = None
+        self.data = Utilities.import_file(scene_file, file_type, "scenes")
         self.scene_file = scene_file
         self.current_scene = starting_scene
-        self.import_file(scene_file, file_type)
+        self.current_characters = list(self.data[self.current_scene]["characters"].items())
         self.current_choices = list(self.data[self.current_scene]["choices"].items())
 
     def start(self):
@@ -17,6 +17,7 @@ class Game:
                 print(self.data[self.current_scene]["onenter"])
                 self.show_choices()
                 self.set_current_scene(self.read_choices())
+                self.show_characters()
                 self.start()
                 return True
         else:
@@ -28,6 +29,11 @@ class Game:
             print(count, val["text"])
             count += 1
 
+    def show_characters(self):
+        print("Current Characters:")
+        for att, val in self.current_characters:
+            print(val["name"])
+
     def read_choices(self):
         user_input = input("Enter input: ")
         if 0 <= int(user_input) < len(self.current_choices) + 1:
@@ -35,18 +41,15 @@ class Game:
         else:
             return False
 
-    def import_file(self, scene_file, file_type="json"):
-        if file_type == "json":
-            with open(scene_file) as f:
-                self.data = json.load(f)
-        elif file_type == "xml":
-            with open(scene_file) as f:
-                self.data = xmltodict.parse(f.read())["scenes"]
-        self.scene_file = scene_file
-
     def set_current_scene(self, new_scene):
         self.current_scene = new_scene
         self.set_current_choices()
+        self.set_current_characters()
 
     def set_current_choices(self):
         self.current_choices = list(self.data[self.current_scene]["choices"].items())
+
+    def set_current_characters(self):
+        self.current_characters = list(self.data[self.current_scene]["characters"].items())
+
+

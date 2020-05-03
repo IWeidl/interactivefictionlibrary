@@ -6,7 +6,7 @@
       "trev_1": {
         "name": "Trevor",
         "age": 30,
-        "gender": "M"
+        "gender": "male"
       }
     },
     "choices": {
@@ -24,6 +24,9 @@
   "outside": {
     "name": "Outside",
     "onenter": "It is snowing like a blizzard outside! This is not good!",
+    "characters": {
+
+    },
     "choices": {
       "choice_1": {
         "pointer": "entry_room",
@@ -39,6 +42,9 @@
   "death": {
     "name": "Death",
     "onenter": "You have died!",
+    "characters": {
+
+    },
     "choices": {
       "choice_1": {
         "pointer": "entry_room",
