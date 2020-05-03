@@ -4,12 +4,11 @@ import xmltodict
 import Utilities
 
 
-class Character:
+class Characters:
     def __init__(self, character_file, file_type="json"):
-        if file_type == "json":
-            self.data = Utilities.import_file(character_file, file_type)
-            self.character_file = character_file
-
+        self.data = Utilities.import_file(character_file, file_type)
+        self.character_file = character_file
+        
     def save_json(self, character_json_file):
         with open(character_json_file, 'w') as f:
             json.dump(self.data, f)
@@ -36,5 +35,5 @@ class Character:
             return True
 
     def print_data(self):
-        print(self.data)
-        print(type(self.data))
+        for char in self.data:
+            print(self.data[char])

@@ -2,7 +2,9 @@ import json
 
 import xmltodict
 import Utilities
-from Character import Character
+from Characters import Characters
+
+
 class Game:
     def __init__(self, scene_file, starting_scene, file_type="json"):
         self.data = Utilities.import_file(scene_file, file_type, "scenes")
@@ -51,5 +53,3 @@ class Game:
 
     def set_current_characters(self):
         self.current_characters = list(self.data[self.current_scene]["characters"].items())
-
-
