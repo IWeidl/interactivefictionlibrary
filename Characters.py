@@ -10,6 +10,9 @@ class Characters:
         self.character_file = character_file
         self.file_type = file_type
 
+    def __getitem__(self, character_number):
+        return self.data[character_number]
+
     def save(self):
         if self.file_type == "json":
             self.save_json(self.character_file)
@@ -39,6 +42,12 @@ class Characters:
             return self.data[char][key]
         except KeyError:
             print(f'DEBUG ERROR: KEY: [{char}][{key}] NOT FOUND')
+
+    def check_stat(self, character, stat, required_value):
+        try:
+            return self.data[character][stat] == required_value
+        except KeyError:
+            return False
 
     def print_data(self):
         for char in self.data:

@@ -2,6 +2,7 @@
   "player": {
     "name": "Izzy",
     "gender": "male",
-    "rank": "Captain"
+    "rank": "Captain",
+    "warp_unlocked": "true"
   }
 }

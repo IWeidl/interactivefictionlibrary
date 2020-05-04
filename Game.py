@@ -8,7 +8,7 @@ class Game:
         self.scene_file = scene_file
         self.current_scene = starting_scene
         self.current_choices = list(self.data[self.current_scene]["choices"].items())
-        characters = Characters(character_file,  file_type)
+        self.characters = Characters(character_file, file_type)
 
     # This is our game play loop, must be called after init
     def start(self):
@@ -24,14 +24,21 @@ class Game:
 
     def show_choices(self):
         count = 1
-        for att, val in self.current_choices:
-            print(count, val["text"])
+        for choice_id, choice_contents in self.data[self.current_scene]["choices"].items():
+            valid = True
+            if "statcheck" in choice_contents:
+                for character, stat in choice_contents["statcheck"].items():
+                    for stat_id, stat_value in stat.items():
+                        if not (self.characters.check_stat(character, stat_id, stat_value)):
+                            valid = False
+            print(f'{count}: {choice_contents["text"]} === {valid}')
             count += 1
 
     def read_choices(self):
         user_input = input("Enter input: ")
         if 0 <= int(user_input) < len(self.current_choices) + 1:
-            return self.current_choices[int(user_input) - 1][1]["pointer"]
+            current_choice = self.current_choices[int(user_input) - 1][1]
+            return current_choice["pointer"]
         else:
             return False
 
