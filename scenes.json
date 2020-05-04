@@ -1,0 +1,30 @@
+{
+    "ship_bridge": {
+        "name": "Falcon Bridge",
+        "onenter": "You walk onto the Bridge and take command.",
+        "choices": {
+            "warp_speed": {
+                "text": "Initiate warp speed!!",
+                "pointer": "warp_options",
+                "statcheck": {
+
+                }
+            }
+        }
+    },
+
+    "warp_options": {
+        "name": "Warp Locations",
+        "onenter": "Where would you like us to warp, Captain?",
+        "choices": {
+            "moon": {
+                "text": "Terra's moon",
+                "pointer": "terra_moon"
+            },
+            "cancel": {
+                "text": "Cancel Warp",
+                "pointer": "ship_bridge"
+            }
+        }
+    }
+}

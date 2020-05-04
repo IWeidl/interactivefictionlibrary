@@ -1,11 +1,7 @@
 {
-    "becky_1": {
-        "name": "Becky",
-        "Age": 30,
-        "job": "writer"
-    },
-    "fred_1": {
-        "name": "Fred",
-        "age": 19
-    }
+  "player": {
+    "name": "Izzy",
+    "gender": "male",
+    "rank": "Captain"
+  }
 }
