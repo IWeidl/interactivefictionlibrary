@@ -1,0 +1,9 @@
+{
+    "ship_bridge": {
+        "name": "Falcon Bridge",
+        "onenter": "You walk onto the Bridge and take command.",
+        "choices": {
+
+        }
+    }
+}

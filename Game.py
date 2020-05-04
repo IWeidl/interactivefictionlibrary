@@ -6,12 +6,13 @@ from Characters import Characters
 
 
 class Game:
-    def __init__(self, scene_file, starting_scene, file_type="json"):
+    def __init__(self, scene_file, starting_scene, character_file, file_type="json"):
         self.data = Utilities.import_file(scene_file, file_type, "scenes")
         self.scene_file = scene_file
         self.current_scene = starting_scene
         self.current_characters = list(self.data[self.current_scene]["characters"].items())
         self.current_choices = list(self.data[self.current_scene]["choices"].items())
+        characters = Characters(character_file,  file_type)
 
     def start(self):
         if self.data is not None:

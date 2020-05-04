@@ -8,31 +8,37 @@ class Characters:
     def __init__(self, character_file, file_type="json"):
         self.data = Utilities.import_file(character_file, file_type)
         self.character_file = character_file
-        
+        self.file_type = file_type
+
+    def save(self):
+        if self.file_type == "json":
+            self.save_json(self.character_file)
+
     def save_json(self, character_json_file):
         with open(character_json_file, 'w') as f:
-            json.dump(self.data, f)
+            json.dump(self.data, f, indent=4)
 
-    def add_value(self, key, value):
-        if key in self.data.keys():
-            return False
-        else:
-            self.data[key] = value
+    def mod_value(self, char, key, value):
+        try:
+            self.data[char][key] = value
             return True
+        except KeyError:
+            print(f'DEBUG ERROR: KEY: [{char}][{key}] NOT FOUND')
+            return False
 
-    def delete_value(self, key):
-        if key not in self.data.keys():
-            return False
-        else:
-            del self.data[key]
+    def del_key(self, char, key):
+        try:
+            del self.data[char][key]
             return True
+        except KeyError:
+            print(f'DEBUG ERROR: KEY: [{char}][{key}] NOT FOUND')
+            return False
 
-    def change_value(self, key, value):
-        if key not in self.data.keys():
-            return False
-        else:
-            self.data[key] = value
-            return True
+    def get_value(self, char, key):
+        try:
+            return self.data[char][key]
+        except KeyError:
+            print(f'DEBUG ERROR: KEY: [{char}][{key}] NOT FOUND')
 
     def print_data(self):
         for char in self.data:
