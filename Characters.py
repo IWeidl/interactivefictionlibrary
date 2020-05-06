@@ -49,6 +49,9 @@ class Characters:
         except KeyError:
             return False
 
+    def check_exists(self, character, stat):
+        return stat in self.data[character]
+
     def print_data(self):
         for char in self.data:
             print(self.data[char])

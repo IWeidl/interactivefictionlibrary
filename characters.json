@@ -2,6 +2,7 @@
   "player": {
     "name": "Izzy",
     "gender": "male",
+    "command_points": 10,
     "rank": "Captain",
     "warp_unlocked": "true"
   }

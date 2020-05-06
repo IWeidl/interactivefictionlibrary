@@ -1,7 +1,12 @@
 {
     "ship_bridge": {
         "name": "Falcon Bridge",
-        "onenter": "You walk onto the Bridge and take command.",
+        "onenter": "{{name}} walks onto the Bridge and take command.",
+        "variables": {
+            "name": {
+                "player": "name"
+            }
+        },
         "choices": {
             "warp_speed": {
                 "text": "Initiate warp speed!!",
@@ -10,6 +15,19 @@
                     "player": {
                         "warp_unlocked": "true",
                         "rank": "Captain"
+                    }
+                },
+                "statmod" : {
+                    "player": {
+                        "set": {
+                            "rank": "Admiral"
+                        },
+                        "add": {
+                            "command_points": -1
+                        },
+                        "delete": {
+                            "gender": 0
+                        }
                     }
                 }
             }

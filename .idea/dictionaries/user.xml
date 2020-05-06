@@ -2,6 +2,7 @@
   <dictionary name="user">
     <words>
       <w>statcheck</w>
+      <w>statmod</w>
     </words>
   </dictionary>
 </component>
