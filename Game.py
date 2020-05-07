@@ -2,6 +2,7 @@ import Utilities
 from Characters import Characters
 import re
 
+
 class Game:
     def __init__(self, scene_file, starting_scene, character_file, file_type="json"):
         self.data = Utilities.import_file(scene_file, file_type, "scenes")
@@ -14,6 +15,7 @@ class Game:
     def start(self):
         if self.data is not None:
             if self.current_scene in self.data.keys():
+                self.process_scene_text("")
                 print(self.data[self.current_scene]["onenter"])
                 self.show_choices()
                 self.set_current_scene(self.read_choices())
@@ -50,7 +52,7 @@ class Game:
                             elif stat_action == "add":
                                 if isinstance(stat_value, int):
                                     self.characters.mod_value(character, stat_target, (
-                                                self.characters[character][stat_target] + int(stat_value)))
+                                            self.characters[character][stat_target] + int(stat_value)))
                                 else:
                                     print("CAN'T PERFORM ADD OP ON NON INT")
                             elif stat_action == "delete":
@@ -72,5 +74,8 @@ class Game:
     def set_current_choices(self):
         self.current_choices = list(self.data[self.current_scene]["choices"].items())
 
-    def process_string(self, raw_string):
-        return re.sub(r'{{.*\}\}', 'TEST', raw_string)
+    def process_scene_text(self, raw_string):
+        for variables, variable in self.data[self.current_scene]["variables"].items():
+            for variable_1, character in variable.items():
+                    print(variable_1, character)
+        return raw_string

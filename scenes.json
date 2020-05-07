@@ -5,6 +5,9 @@
         "variables": {
             "name": {
                 "player": "name"
+            },
+            "age": {
+                "player": "age"
             }
         },
         "choices": {
